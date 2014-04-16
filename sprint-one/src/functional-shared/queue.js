@@ -1,11 +1,11 @@
-var extend = function(obj) {
-  var args = Array.prototype.slice.call(arguments, 1);
-  for(var i = 0; i < args.length; i++) {
-    for(var key in args[i]){
-      obj[key] = args[i][key];
-    }
-  }
-};
+// var extend = function(obj) {
+//   var args = Array.prototype.slice.call(arguments, 1);
+//   for(var i = 0; i < args.length; i++) {
+//     for(var key in args[i]){
+//       obj[key] = args[i][key];
+//     }
+//   }
+// };
 
 var makeQueue = function(){
   // Hey! Copy your code from src/functional/queue.js and paste it here
@@ -19,7 +19,7 @@ var makeQueue = function(){
   instance.frontOfQueue = 0;
   // Implement the methods below
   //extend makeQueue with queueMethods
-  extend(instance, queueMethods);
+  _.extend(instance, queueMethods);
   return instance;
 };
 
