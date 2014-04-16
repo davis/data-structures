@@ -14,6 +14,14 @@ var makeStack = function(){
   };
 
   instance.pop = function(){
+    // decrement size
+    size && size--;
+    // cache last item
+    var item = storage[size];
+    // delete last item
+    delete storage[size];
+    // return cached last item
+    return item;
   };
 
   instance.size = function(){
