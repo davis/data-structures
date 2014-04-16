@@ -28,7 +28,6 @@ var queueMethods = {};
 
 queueMethods.enqueue = function(value){
     //set storage[size] to value
-    console.log(this);
     this.storage[this.endOfQueue] = value;
     this.endOfQueue++;
   };
