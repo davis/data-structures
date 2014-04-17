@@ -31,15 +31,14 @@ var makeLinkedList = function(){
 
   list.contains = function(target, node){
     node = node || list.head;
-
-    // check if first item's value is equal to target, if so, return true.
-    if(node.value === target) {
-      return true;
-    }
-    else {
-      if(node.next !== null) {
-        if(list.contains(target, node.next)) {
-          return true;
+    if(node) { // if node is not null
+      // check if first item's value is equal to target, if so, return true.
+      if(node.value === target) {
+        return true;
+      }
+      else {
+        if(node.next) {
+          return list.contains(target, node.next);
         }
       }
     }
