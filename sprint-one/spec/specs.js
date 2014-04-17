@@ -19,6 +19,7 @@ define([
   describe("stack", function() {
 
     var stack;
+    var stacks = [];
     var instantiator = variant === 'pseudoclassical' ? Stack : makeStack;
     var prototypeOfInstances = variant === 'prototypal' && stackMethods;
 
@@ -36,6 +37,23 @@ define([
 
       it('reports a size of zero for a new stack', function() {
         expect(stack.size()).to.equal(0);
+      });
+
+      it('reports 5k items', function() {
+        var findMe = (function() {
+          for(var i = 0; i < 100000; i++) {
+            if(variant === 'pseudoclassical'){
+              stacks.push(new instantiator());
+            } else {
+              stacks.push(instantiator());
+            }
+            stacks[i].push('a');
+            stacks[i].push('b');
+            stacks[i].pop();
+            // console.log(stacks[i]);
+          }
+        }());
+        expect(true).to.equal(true);
       });
 
       it('reports a size of 2 after adding two items', function() {
