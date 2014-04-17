@@ -30,23 +30,20 @@ var makeLinkedList = function(){
   };
 
   list.contains = function(target, node){
-    var keepLooping = true;
-    var nodeBeingChecked = list.head;
-    // while loop to iterate until the last item is reached
-    while(keepLooping)
-      // check if first item's value is equal to target, if so, return true.
-      if(nodeBeingChecked.value === target) {
-        keepLooping = false;
-        return true;
-      }
-      // else, go to the next item, and check again
-      else {
-        nodeBeingChecked = nodeBeingChecked.next;
-        if(nodeBeingChecked === null) {
-          keepLooping = false;
-          return false;
+    node = node || list.head;
+
+    // check if first item's value is equal to target, if so, return true.
+    if(node.value === target) {
+      return true;
+    }
+    else {
+      if(node.next !== null) {
+        if(list.contains(target, node.next)) {
+          return true;
         }
       }
+    }
+    return false;
   };
 
   return list;
