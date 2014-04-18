@@ -34,10 +34,10 @@ BinarySearchTree.prototype.contains = function(target) {
   if(target === this.value) {
     return true;
   // if less and there is a left, recurse target against left
-  } else if (target < this.value && this.left !== null) {
+  } else if (target < this.value && this.left) {
     return this.left.contains(target);
   // if greater and there is a right, recurse target against right
-  } else if (target > this.value && this.right !== null) {
+  } else if (target > this.value && this.right) {
     return this.right.contains(target);
   // else return false;
   } else {
@@ -48,10 +48,12 @@ BinarySearchTree.prototype.contains = function(target) {
 BinarySearchTree.prototype.depthFirstLog = function(callback) {
   callback.call(this);
   if(this.left) {
-    BinarySearchTree.prototype.depthFirstLog.call(this.left, callback);
+    // BinarySearchTree.prototype.depthFirstLog.call(this.left, callback);
+    this.left.depthFirstLog(callback);
   }
   if(this.right) {
-    BinarySearchTree.prototype.depthFirstLog.call(this.right, callback);
+    // BinarySearchTree.prototype.depthFirstLog.call(this.right, callback);
+    this.right.depthFirstLog(callback);
   }
 };
 
