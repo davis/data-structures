@@ -11,7 +11,6 @@ var BinarySearchTree = function(value){
 BinarySearchTree.prototype.insert = function(newValue){
 
   var newBST = new BinarySearchTree(newValue);  // instantiate new bst for newItem
-  console.dir(newBST);
 
   if(newValue < this.value) {             // check if bst's value is less than the current node's value.
     if(this.left) {              // check if there is a left.
