@@ -1,26 +1,32 @@
 var BinarySearchTree = function(value){
   // instantiate tree object
   // give value property to object
-  this._value = value;
+  this.value = value;
   // give left & right property to object
-  this._left = null;
-  this._right = null;
+  this.left = null;
+  this.right = null;
 };
 
 // create insert node method
-BinarySearchTree.prototype.insert = function(newItem){
-  var left = this._left;
-  var right = this._right;
-  var bst = new BinarySearchTree(newItem);  // instantiate new bst for newItem
+BinarySearchTree.prototype.insert = function(newValue){
 
-  if(bst._value < this._value) {    // check if bst's value is less than the current node's value.
-    if(left === null) {             // check if there is a left.
-      left = bst;                   // if not, set bst as left
+  var newBST = new BinarySearchTree(newValue);  // instantiate new bst for newItem
+  console.dir(newBST);
+
+  // debugger;
+
+  if(newValue < this.value) {    // check if bst's value is less than the current node's value.
+    if(this.left === null) {             // check if there is a left.
+      this.left = newBST;                   // if not, set bst as left
     } else {                        // if there is a left,
-      left.insert(bst._value);      // recurse on left.
+      this.left.insert(newValue);      // recurse on left.
     }
-  } else if(bst._value > this._value){
-    this._right = bst;
+  } else if(newValue > this.value) {
+    if(this.right === null) {
+      this.right = newBST;
+    } else {
+      this.right.insert(newValue);
+    }
   }
 };
 // create contains method
