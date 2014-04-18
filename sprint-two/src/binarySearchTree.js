@@ -27,7 +27,7 @@ BinarySearchTree.prototype.insert = function(newValue){
     }
   }
 };
-// create contains method
+// contains(target): this function returns true if BST contains target, else returns false
 BinarySearchTree.prototype.contains = function(target) {
   // compare current item with target value
   // if equal, return true
@@ -44,8 +44,38 @@ BinarySearchTree.prototype.contains = function(target) {
     return false;
   }
 };
-// create depthFirstLog method
-BinarySearchTree.prototype.depthFirstLog = function() {};
+//  depthFirstLog takes a method and applies the callback to every item in the BST
+BinarySearchTree.prototype.depthFirstLog = function(callback) {
+  callback.call(this);
+  if(this.left) {
+    BinarySearchTree.prototype.depthFirstLog.call(this.left, callback);
+  }
+  if(this.right) {
+    BinarySearchTree.prototype.depthFirstLog.call(this.right, callback);
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
