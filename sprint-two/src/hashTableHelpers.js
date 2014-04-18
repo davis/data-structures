@@ -11,31 +11,30 @@
 //   limitedArray.set(3, 'hi');
 //   limitedArray.get(3); // returns 'hi'
 
-var makeLimitedArray = function(limit){
-  var storage = [];
+var LimitedArray = function(limit){
 
-  var limitedArray = {};
-  limitedArray.get = function(index){
-    checkLimit(index);
-    return storage[index];
-  };
-  limitedArray.set = function(index, value){
-    checkLimit(index);
-    storage[index] = value;
-  };
-  limitedArray.each = function(callback){
-    for(var i = 0; i < storage.length; i++){
-      callback(storage[i], i, storage);
-    }
-  };
-
-  var checkLimit = function(index){
+  this._storage = [];
+  this._checkLimit = function(index){
     if(typeof index !== 'number'){ throw new Error('setter requires a numeric index for its first argument'); }
     if(limit <= index){ throw new Error('Error trying to access an over-the-limit index'); }
   };
-
-  return limitedArray;
 };
+
+LimitedArray.prototype.get = function(index){
+  this._checkLimit(index);
+  return this._storage[index];
+};
+LimitedArray.prototype.set = function(index, value){
+  this._checkLimit(index);
+  this._storage[index] = value;
+};
+LimitedArray.prototype.each = function(callback){
+  for(var i = 0; i < this._storage.length; i++){
+    callback(this._storage[i], i, this._storage);
+  }
+};
+
+
 
 // This is a "hashing function". You don't need to worry about it, just use it
 // to turn any string into an integer that is well-distributed between the
