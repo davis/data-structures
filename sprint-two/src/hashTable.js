@@ -50,7 +50,7 @@ HashTable.prototype.resize = function(limit) {
 
 HashTable.prototype.insert = function(k, v) {
   var bucket;
-  console.log(k, v);
+  // console.log(k, v);
   //check if hashtable needs to be expanded
   //get the hash for input
   var i = getIndexBelowMaxForKey(k, this._limit);
@@ -69,8 +69,8 @@ HashTable.prototype.insert = function(k, v) {
   }
   // increment size control counter
   this._currentSize++;
-  console.log('storagelength: ', this._storage.get(i).length)
-  console.log('current size in insert ', this._currentSize);
+  // console.log('storagelength: ', this._storage.get(i).length)
+  // console.log('current size in insert ', this._currentSize);
   if(this._currentSize > this._limit * this._maxSpaceUsage) {
     this.resize(this._limit * 2);
   }
