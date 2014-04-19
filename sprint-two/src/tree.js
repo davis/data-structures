@@ -1,34 +1,9 @@
-var each = function(obj, iterator, context) {
-  if(Array.isArray(obj)) {
-    for (var i = 0, length = obj.length; i < length; i++) {
-      iterator.call(context, obj[i], i, obj);
-    }
-  } else {
-    var keys = Object.keys(obj);
-    for (var i = 0, length = keys.length; i < length; i++) {
-      iterator.call(context, obj[keys[i]], keys[i], obj);
-    }
-  }
-  return obj;
-};
-
-var extend = function(obj) {
-    each(Array.prototype.slice.call(arguments, 1), function(source) {
-      if (source) {
-        for (var prop in source) {
-          obj[prop] = source[prop];
-        }
-      }
-    });
-    return obj;
-  };
-
 var makeTree = function(value){
   var newTree = {};
   newTree.value = value;
   newTree.children = undefined;
   //give newTree access to tree methods
-  extend(newTree, treeMethods);
+  _.extend(newTree, treeMethods);
   return newTree;
 };
 
