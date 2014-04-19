@@ -45,7 +45,7 @@ BinarySearchTree.prototype.contains = function(target) {
 };
 //  depthFirstLog takes a method and applies the callback to every item in the BST
 BinarySearchTree.prototype.depthFirstLog = function(callback) {
-  callback.call(this);
+  callback.call(this, this.value, this.left, this.right);
   if(this.left) {
     // BinarySearchTree.prototype.depthFirstLog.call(this.left, callback);
     this.left.depthFirstLog(callback);
